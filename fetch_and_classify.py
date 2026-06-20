@@ -10,6 +10,7 @@ Intended to run on a schedule via GitHub Actions. Requires a FIRMS_MAP_KEY
 environment variable (set as a GitHub Actions secret, never committed).
 """
 import json
+import time
 import os
 import sys
 import urllib.request
@@ -27,10 +28,23 @@ REPEAT_THRESHOLD = 3  # distinct days seen before treated as a fixed source, not
 SUPPRESS_RADIUS_MILES = 3  # ignore detections this close to an already-tracked NIFC fire
  
  
-def fetch_text(url, timeout=30):
-    req = urllib.request.Request(url, headers={"User-Agent": "fireline-bot/1.0"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read().decode("utf-8")
+def fetch_text(url, timeout=30, retries=3):
+    req = urllib.request.Request(
+        url,
+        headers={"User-Agent": "Fireline"}
+    )
+
+    for attempt in range(retries):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.read().decode("utf-8")
+
+        except Exception as e:
+            if attempt == retries - 1:
+                raise e
+
+            print(f"Network error, retrying ({attempt+1}/{retries})...")
+            time.sleep(10)
  
  
 def fetch_json(url, timeout=30):
