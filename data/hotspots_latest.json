@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T16:40:22.115807+00:00",
+  "generatedAt": "2026-07-03T19:39:16.247777+00:00",
   "hotspots": [
     {
       "lat": 45.81474,
@@ -3200,6 +3200,15 @@
       "lat": 41.99368,
       "lon": -113.41749,
       "frp": 1.66,
+      "confidence": "n",
+      "date": "2026-07-03",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 42.38477,
+      "lon": -122.7746,
+      "frp": 0.63,
       "confidence": "n",
       "date": "2026-07-03",
       "daysSeen": 1,
