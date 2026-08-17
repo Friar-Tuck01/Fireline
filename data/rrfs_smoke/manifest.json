@@ -1,0 +1,107 @@
+{
+  "generatedAt": "2026-08-17T18:42:01.051851+00:00",
+  "cycleDate": "20260817",
+  "cycleHour": "12",
+  "bounds": [
+    [
+      31.0,
+      -125.0
+    ],
+    [
+      49.0,
+      -102.0
+    ]
+  ],
+  "hours": [
+    {
+      "hour": 0,
+      "file": "f000.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*aerosol=Particulate organic matter dry:aerosol_size <2\\.5e-06"
+    },
+    {
+      "hour": 6,
+      "file": "f006.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
+    },
+    {
+      "hour": 12,
+      "file": "f012.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
+    },
+    {
+      "hour": 18,
+      "file": "f018.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
+    },
+    {
+      "hour": 24,
+      "file": "f024.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
+    },
+    {
+      "hour": 30,
+      "file": "f030.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
+    },
+    {
+      "hour": 36,
+      "file": "f036.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
+    },
+    {
+      "hour": 42,
+      "file": "f042.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
+    },
+    {
+      "hour": 48,
+      "file": "f048.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
+    },
+    {
+      "hour": 54,
+      "file": "f054.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
+    },
+    {
+      "hour": 60,
+      "file": "f060.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
+    },
+    {
+      "hour": 66,
+      "file": "f066.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
+    },
+    {
+      "hour": 72,
+      "file": "f072.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
+    },
+    {
+      "hour": 78,
+      "file": "f078.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
+    },
+    {
+      "hour": 84,
+      "file": "f084.png",
+      "variant": "pr",
+      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
+    }
+  ]
+}
