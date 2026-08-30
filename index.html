@@ -2199,29 +2199,44 @@ function setRadarLayer(on){
   }).addTo(map);
 }
 
-// ──── Satellite — GOES imagery via NOAA nowCOAST ────────────────────────────
-// The old /arcgis/... MapServer path (also what the original GLM lightning
-// code used) has been dead since 4/19/2023 — nowCOAST migrated to GeoServer
-// WMS. Confirmed directly from a live GetCapabilities response:
+// ──── Satellite — GOES imagery ───────────────────────────────────────────────
+// Standard (visible): NOAA nowCOAST, confirmed directly from a live
+// GetCapabilities response. The old /arcgis/... MapServer path (also what
+// the original GLM lightning code used) has been dead since 4/19/2023 —
+// nowCOAST migrated to GeoServer WMS.
 //   Endpoint: nowcoast.noaa.gov/geoserver/observations/satellite/ows
-//   goes_visible_imagery  — Band 2, 0.5km, 5-min updates — standard/clouds
-//   goes_longwave_imagery — Band 14, 2km, 5-min updates — cloud top temp
+//   goes_visible_imagery — Band 2, 0.5km, 5-min updates
+//
+// Cloud top temperature: nowCOAST's own longwave-IR layer only has ONE
+// style defined server-side (confirmed from that same capabilities
+// response) — raw grayscale brightness temperature, no color enhancement
+// available there at all. Using IEM's GOES-West IR service instead, which
+// documentation shows offers a colorized layer as a distinct option from
+// its own explicitly-named "_gray" variant — meaning west_ir_4km (without
+// that suffix) should be the enhanced/colorized version. This endpoint
+// wasn't independently re-verified live this session (found via docs
+// showing a real prior executed example, not a fresh fetch) — check the
+// result and let me know if it comes back blank or still monochrome.
 const NOWCOAST_SAT_WMS = 'https://nowcoast.noaa.gov/geoserver/observations/satellite/ows?SERVICE=WMS&';
-const NOWCOAST_SAT_LAYERS = {
-  standard: 'goes_visible_imagery',
-  cloudtop: 'goes_longwave_imagery',
-};
+const IEM_IR_WMS = 'https://mesonet.agron.iastate.edu/cgi-bin/mapserv/mapserv?map=/opt/iem/data/wms/goes/west_ir.map&SERVICE=WMS&';
 
 function setSatelliteLayer(on){
   if(satelliteLayer){ map.removeLayer(satelliteLayer); satelliteLayer=null; }
   if(!on) return;
   const mode = document.querySelector('input[name="satellite-mode"]:checked')?.value || 'standard';
-  const layerName = NOWCOAST_SAT_LAYERS[mode];
-  satelliteLayer = L.tileLayer.wms(NOWCOAST_SAT_WMS, {
-    pane:'lightningPane', layers:layerName, format:'image/png',
-    transparent:true, opacity:0.75, version:'1.3.0',
-    attribution: mode==='cloudtop' ? 'NOAA nowCOAST · GOES Longwave IR' : 'NOAA nowCOAST · GOES Visible',
-  }).addTo(map);
+  if(mode==='cloudtop'){
+    satelliteLayer = L.tileLayer.wms(IEM_IR_WMS, {
+      pane:'lightningPane', layers:'west_ir_4km', format:'image/png',
+      transparent:true, opacity:0.75, version:'1.1.1',
+      attribution:'IEM · GOES-West IR (colorized)',
+    }).addTo(map);
+  } else {
+    satelliteLayer = L.tileLayer.wms(NOWCOAST_SAT_WMS, {
+      pane:'lightningPane', layers:'goes_visible_imagery', format:'image/png',
+      transparent:true, opacity:0.75, version:'1.3.0',
+      attribution:'NOAA nowCOAST · GOES Visible',
+    }).addTo(map);
+  }
   document.getElementById('satellite-status').textContent =
     mode==='cloudtop' ? 'Cloud top temperature (updates ~5 min)' : 'Standard visible imagery (updates ~5 min)';
 }
