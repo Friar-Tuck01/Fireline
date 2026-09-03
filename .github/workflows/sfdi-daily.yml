@@ -1,0 +1,138 @@
+# Daily SFDI update for Fireline.
+#
+# ONE-TIME SETUP REQUIRED before this will run -- see sfdi/DEPLOY.md.
+# The workflow fails with a clear message until the state release exists.
+name: SFDI daily
+
+on:
+  schedule:
+    # 15:00 UTC = 8am Pacific. gridMET publishes overnight and runs a few
+    # days behind regardless, so the exact hour does not matter much -- what
+    # matters is running every day so the state never falls far behind.
+    - cron: "0 15 * * *"
+  workflow_dispatch:        # lets you trigger a run by hand from the Actions tab
+
+# Never let two runs overlap. Both would start from the same state, and the
+# second to finish would overwrite the first -- silently losing a day from a
+# build-up index that cannot be recomputed.
+concurrency:
+  group: sfdi-daily
+  cancel-in-progress: false
+
+permissions:
+  contents: write           # needed to commit the PNG and replace the asset
+
+env:
+  SFDI_WORK: ${{ github.workspace }}/work
+  STATE_TAG: sfdi-state     # the release whose asset we replace each day
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install --quiet numpy netCDF4 pillow
+
+      - name: Stage the work directory
+        run: |
+          mkdir -p "$SFDI_WORK/meta" "$SFDI_WORK/raw" \
+                   "$SFDI_WORK/breakpoints" "$SFDI_WORK/daily"
+          # Static inputs live in the repo: the grid definition and the
+          # climatology lookup tables. These never change between runs.
+          cp data/climate_class.npy data/lat.npy data/lons.npy "$SFDI_WORK/meta/"
+          cp data/sfdi_lookup.npz "$SFDI_WORK/breakpoints/"
+
+      - name: Fetch yesterday's fuel-moisture state
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # The state is ~40 MB and changes daily. Committing it would add
+          # roughly 14 GB of git history a year, so it lives as a release
+          # asset instead: replaceable in place, outside the git tree.
+          if ! gh release download "$STATE_TAG" \
+                 --pattern "state.pkl" --pattern "last_date.json" \
+                 --dir "$SFDI_WORK/meta" --clobber; then
+            echo "::error::No '$STATE_TAG' release asset found."
+            echo "::error::Run the one-time setup in sfdi/DEPLOY.md first."
+            exit 1
+          fi
+          ls -lh "$SFDI_WORK/meta"
+
+      - name: Advance the state and render
+        id: run
+        working-directory: sfdi
+        run: |
+          set -o pipefail
+          python daily_sfdi.py run 2>&1 | tee ../run.log
+          # "already current" is a normal outcome, not a failure: gridMET
+          # lags a few days, so some mornings there is genuinely nothing new.
+          if grep -q "state is already current" ../run.log; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Verify the output before publishing anything
+        if: steps.run.outputs.changed == 'true'
+        run: |
+          python - <<'PY'
+          import json, os, sys
+          d = os.environ["SFDI_WORK"] + "/daily"
+          m = json.load(open(d + "/sfdi_latest.json"))
+          png = os.path.getsize(d + "/sfdi_latest.png")
+          print("valid", m["valid_date"], "| png", png, "bytes")
+          # A blank or near-blank PNG means the classification collapsed --
+          # publish nothing rather than replace a good map with a broken one.
+          if png < 5000:
+              sys.exit(f"PNG is only {png} bytes; refusing to publish")
+          fr = m["class_fractions"]
+          if fr["Low"] > 0.98:
+              sys.exit(f"98%+ of cells are Low ({fr}); that is not a real "
+                       f"field, refusing to publish")
+          if abs(sum(fr.values()) - 1.0) > 0.02:
+              sys.exit(f"class fractions do not sum to 1: {fr}")
+          print("fractions:", fr)
+          PY
+
+      - name: Save the new state back to the release
+        if: steps.run.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # --clobber replaces the asset in place. Upload state BEFORE
+          # committing the map: if this step fails, the published map still
+          # matches the stored state. The reverse order could leave a map on
+          # the site that the state can never reproduce.
+          gh release upload "$STATE_TAG" \
+            "$SFDI_WORK/meta/state.pkl" \
+            "$SFDI_WORK/meta/last_date.json" --clobber
+
+      - name: Publish the map
+        if: steps.run.outputs.changed == 'true'
+        run: |
+          cp "$SFDI_WORK/daily/sfdi_latest.png"  data/
+          cp "$SFDI_WORK/daily/sfdi_latest.json" data/
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/sfdi_latest.png data/sfdi_latest.json
+          if git diff --staged --quiet; then
+            echo "no change to publish"
+          else
+            VALID=$(python -c "import json;print(json.load(open('data/sfdi_latest.json'))['valid_date'])")
+            git commit -m "SFDI valid $VALID"
+            git push
+          fi
+
+      - name: Upload the log if anything failed
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfdi-run-log
+          path: run.log
+          if-no-files-found: ignore
