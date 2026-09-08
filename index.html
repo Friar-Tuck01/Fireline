@@ -879,6 +879,27 @@ img.hdwi-layer-blur { filter: blur(28px); } /* Leaflet puts className on img, no
         <div class="firms-status" id="hdwi-status"></div>
         <!-- Energy Release Component -->
         <label class="checkbox-row">
+          <input type="checkbox" id="toggle-hdwipct" />
+          <span>HDWI percentile vs. climatology</span>
+        </label>
+        <div id="hdwipct-legend-inline" style="display:none;margin-top:3px;padding-left:4px;flex-direction:column;gap:2px;">
+          <div style="font-size:10px;color:var(--ash-dim);margin-bottom:4px;">Where today's hot-dry-windy conditions rank against <em>that exact cell's</em> 1979–2017 record. Each area is colored by the highest band it reaches, so the bands are ranges rather than overlays.</div>
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <div class="cl-row"><span class="cl-swatch" style="background:#FACC3C;"></span><span>90th – 95th</span><span style="margin-left:auto;opacity:0.6;">5% of days</span></div>
+            <div class="cl-row"><span class="cl-swatch" style="background:#F5821E;"></span><span>95th – 97th</span><span style="margin-left:auto;opacity:0.6;">2%</span></div>
+            <div class="cl-row"><span class="cl-swatch" style="background:#D72D23;"></span><span>97th – 99th</span><span style="margin-left:auto;opacity:0.6;">2%</span></div>
+            <div class="cl-row"><span class="cl-swatch" style="background:#FFFFFF;"></span><span>99th and above</span><span style="margin-left:auto;opacity:0.6;">1%</span></div>
+          </div>
+          <div id="hdwipct-legend-today" style="font-size:9.5px;margin-top:5px;color:var(--caution);"></div>
+          <div style="font-size:9.5px;line-height:1.4;margin-top:4px;opacity:0.8;">Unshaded means below the 90th percentile — ordinary for that place. Higher bands cover less ground by design; a near-empty 99th is a quiet day, not a broken layer.</div>
+          <div id="hdwipct-legend-date" style="font-size:9.5px;margin-top:4px;opacity:0.75;"></div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:6px;">
+            <span style="font-size:10px;">Opacity</span>
+            <input type="range" id="hdwipct-opacity" min="20" max="100" value="80" style="flex:1;height:3px;accent-color:var(--ember);" />
+          </div>
+        </div>
+        <div class="firms-status" id="hdwipct-status"></div>
+        <label class="checkbox-row">
           <input type="checkbox" id="toggle-erc" />
           <span>Energy Release Component (ERC)</span>
         </label>
@@ -1105,7 +1126,8 @@ img.hdwi-layer-blur { filter: blur(28px); } /* Leaflet puts className on img, no
       <div class="ds-section">
         <div class="ds-header">🌤 Weather</div>
         <div class="ds-row"><span class="ds-layer">NEXRAD radar</span><a href="https://mesonet.agron.iastate.edu" target="_blank" rel="noopener" class="ds-source">Iowa State IEM</a><span class="ds-note">N0Q base reflectivity WMS tiles</span></div>
-        <div class="ds-row"><span class="ds-layer">Temperature map</span><a href="https://open-meteo.com" target="_blank" rel="noopener" class="ds-source">Open-Meteo</a><span class="ds-note">2 m air temperature from GFS + ECMWF · free, no API key · same grid the humidity map uses</span></div>
+        <div class="ds-row"><span class="ds-layer">HDWI percentile vs. climatology</span><a href="https://github.com/Friar-Tuck01/Fireline/tree/main/sfdi" target="_blank" rel="noopener" class="ds-source">Fireline · sfdi/</a><span class="ds-note">Computed by Fireline. HDWI = wind × vapour pressure deficit, from gridMET daily max temperature, min humidity and mean wind · ranked against a per-cell 1979–2017 record (14,245 days) · replaces the earlier version, which compared today against a single year of ERA5 · gridMET observations lag 2–4 days</span></div>
+                <div class="ds-row"><span class="ds-layer">Temperature map</span><a href="https://open-meteo.com" target="_blank" rel="noopener" class="ds-source">Open-Meteo</a><span class="ds-note">2 m air temperature from GFS + ECMWF · free, no API key · same grid the humidity map uses</span></div>
                 <div class="ds-row"><span class="ds-layer">Distribution lines</span><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" class="ds-source">OpenStreetMap</a><span class="ds-note">power=minor_line and power=cable via the Overpass API · © OpenStreetMap contributors, ODbL · volunteer-mapped, so coverage varies widely by area · loads at zoom 13+ only</span></div>
                 <div class="ds-row"><span class="ds-layer">Severe Fire Danger Index (SFDI)</span><a href="https://www.mdpi.com/2571-6255/2/3/47" target="_blank" rel="noopener" class="ds-source">Method: Jolly et al. 2019</a><span class="ds-note">Computed by Fireline, <b>not</b> a redistributed agency product. Each day's ERC and BI are ranked against that grid cell's own 1979–2017 record; the two percentiles are multiplied and the product is itself ranked, then classified at the 60th/80th/90th/97th percentiles. Answers "how unusual is today <em>here</em>", so it is comparable between sagebrush and timber in a way raw ERC is not.</span></div>
         <div class="ds-row" style="padding-left:14px;border-left:2px solid var(--line);"><span class="ds-layer">↳ Meteorology</span><a href="https://www.climatologylab.org/gridmet.html" target="_blank" rel="noopener" class="ds-source">gridMET</a><span class="ds-note">Abatzoglou 2013, University of Idaho · 4 km daily temperature, humidity, wind, precipitation and solar radiation · <b>observations, not forecasts — published 2–4 days behind real time</b>, and the map states its valid date</span></div>
@@ -1863,6 +1885,7 @@ let state = {
   showSFP:false,
   showERC:false,
   showSFDI:false,
+  showHdwiPct:false,
   showTemperature:false,
   showOsmPower:false,
   showFuelModel:false,
@@ -2980,6 +3003,67 @@ let sfdiLayer = null;
 let sfdiManifest = null;
 const SFDI_PNG = 'data/sfdi_latest.png';
 const SFDI_JSON = 'data/sfdi_latest.json';
+
+/* ---- HDWI percentile bands ------------------------------------------
+   Replaces the old current-vs-1995 ratio. Today's HDWI is ranked against
+   that cell's own 1979-2017 gridMET record, and the cell is painted by the
+   HIGHEST percentile band it exceeds. Below the 90th is left transparent:
+   on a normal day that is ~90% of the map, and painting it would bury the
+   terrain while telling you nothing.
+
+   Expect the map to empty out fast as the bands climb. p90 is one day in
+   ten, p99 is three or four days a year at a given cell -- a nearly blank
+   99th-percentile field is the correct answer, not a broken one.        */
+let hdwiPctLayer = null;
+let hdwiPctManifest = null;
+const HDWI_PNG  = 'data/hdwi_latest.png';
+const HDWI_JSON = 'data/hdwi_latest.json';
+
+async function setHdwiPctLayer(on){
+  if(hdwiPctLayer){ map.removeLayer(hdwiPctLayer); hdwiPctLayer=null; }
+  const status = document.getElementById('hdwipct-status');
+  if(!on){ status.textContent=''; return; }
+  try{
+    if(!hdwiPctManifest){
+      status.textContent='Loading HDWI percentiles…';
+      const res = await fetch(HDWI_JSON + '?t=' + Date.now(),
+                             {signal: makeAbortTimeout(15000)});
+      if(!res.ok) throw new Error('manifest HTTP '+res.status);
+      hdwiPctManifest = await res.json();
+    }
+    const op = document.getElementById('hdwipct-opacity').value/100;
+    hdwiPctLayer = L.imageOverlay(HDWI_PNG + '?t=' + Date.now(),
+      hdwiPctManifest.bounds, {
+        pane:'sfdiPane', opacity: op, interactive:false,
+        attribution:'HDWI percentiles: Fireline / gridMET'
+      }).addTo(map);
+
+    const valid = hdwiPctManifest.valid_date;
+    const age = Math.round((Date.now() - new Date(valid+'T12:00:00Z'))/86400000);
+    const f = hdwiPctManifest.band_fractions || {};
+    let txt = `Valid ${valid}`
+      + (age>0 ? ` · ${age} day${age===1?'':'s'} old` : '');
+    if(age > 10) txt += ' · STALE';
+    document.getElementById('hdwipct-legend-date').textContent = txt;
+    // How much of the West is above each band today, against how much would
+    // be on an average day. That comparison is the whole point of a
+    // percentile product and costs one line to show.
+    // Use the cumulative figure the manifest now carries. Reading the
+    // 90-95 band alone would have understated it -- that band excludes
+    // everywhere hotter, which is exactly the ground worth counting.
+    const above = hdwiPctManifest.above_p90_fraction;
+    if(above != null){
+      const el = document.getElementById('hdwipct-legend-today');
+      el.textContent = `Today: ${(100*above).toFixed(1)}% of the West is above `
+        + `its own 90th percentile (average day: 10%)`;
+      el.style.color = above > 0.20 ? 'var(--ember)' : 'var(--caution)';
+    }
+    status.textContent = txt;
+  }catch(e){
+    status.textContent = 'HDWI percentiles unavailable: ' + e.message;
+    console.error('HDWI percentile layer', e);
+  }
+}
 
 async function setSFDILayer(on){
   if(sfdiLayer){ map.removeLayer(sfdiLayer); sfdiLayer=null; }
@@ -7175,6 +7259,7 @@ const RELOCATED_LEGENDS = [
   ['lightning-legend-inline',      'Lightning'],
   ['smoke-forecast-legend-inline', 'Smoke Forecast'],
   ['hdwi-legend-inline',           'Hot Dry Windy Index'],
+  ['hdwipct-legend-inline',        'HDWI Percentile'],
   ['erc-legend-inline',            'Energy Release Component'],
   ['sfdi-legend-inline',           'Severe Fire Danger Index'],
   ['aircraft-legend-inline',       'Aircraft'],
@@ -7210,6 +7295,15 @@ function relocateLegends(){
 }
 relocateLegends();
 
+document.getElementById('toggle-hdwipct').addEventListener('change',(e)=>{
+  state.showHdwiPct=e.target.checked;
+  document.getElementById('hdwipct-legend-inline').style.display=
+    state.showHdwiPct?'flex':'none';
+  setHdwiPctLayer(state.showHdwiPct);
+});
+document.getElementById('hdwipct-opacity').addEventListener('input',(e)=>{
+  if(hdwiPctLayer) hdwiPctLayer.setOpacity(e.target.value/100);
+});
 document.getElementById('toggle-sfdi').addEventListener('change',(e)=>{
   state.showSFDI=e.target.checked;
   document.getElementById('sfdi-legend-inline').style.display=state.showSFDI?'flex':'none';
