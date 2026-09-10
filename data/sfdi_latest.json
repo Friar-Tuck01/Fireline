@@ -1,6 +1,6 @@
 {
-  "valid_date": "2026-09-07",
-  "generated_utc": "2026-09-09T17:24:46.420736Z",
+  "valid_date": "2026-09-08",
+  "generated_utc": "2026-09-10T17:56:29.402306Z",
   "bounds": [
     [
       31.024999618530273,
@@ -30,18 +30,18 @@
     "#8B2FB0"
   ],
   "class_cell_counts": {
-    "Low": 119431,
-    "Moderate": 44495,
-    "High": 14983,
-    "Very High": 12102,
-    "Severe": 16372
+    "Low": 99339,
+    "Moderate": 60626,
+    "High": 16057,
+    "Very High": 15554,
+    "Severe": 15807
   },
   "class_fractions": {
-    "Low": 0.5759,
-    "Moderate": 0.2146,
-    "High": 0.0722,
-    "Very High": 0.0584,
-    "Severe": 0.0789
+    "Low": 0.479,
+    "Moderate": 0.2923,
+    "High": 0.0774,
+    "Very High": 0.075,
+    "Severe": 0.0762
   },
   "source": "gridMET meteorology; NFDRS 1978 Fuel Model G; SFDI after Jolly et al. 2019",
   "climatology": "1979-2017"
