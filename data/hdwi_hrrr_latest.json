@@ -1,0 +1,45 @@
+{
+  "valid_date": "2026-09-12",
+  "window_end_utc": "2026-09-12T00:00:00Z",
+  "analyses_used": [
+    "2026-09-12T00:00:00Z",
+    "2026-09-11T18:00:00Z",
+    "2026-09-11T12:00:00Z",
+    "2026-09-11T06:00:00Z"
+  ],
+  "generated_utc": "2026-09-12T03:20:54.353277Z",
+  "bounds": [
+    [
+      31.024999618530273,
+      -124.76666663333334
+    ],
+    [
+      49.400001525878906,
+      -102.01666663333334
+    ]
+  ],
+  "bands": [
+    "90-95th",
+    "95-97th",
+    "97-99th",
+    "99th+"
+  ],
+  "colors": [
+    "#FACC3C",
+    "#F5821E",
+    "#D72D23",
+    "#FFFFFF"
+  ],
+  "band_cell_counts": {
+    "90-95th": 27404,
+    "95-97th": 7334,
+    "97-99th": 4141,
+    "99th+": 1489
+  },
+  "above_p90_cells": 40368,
+  "above_p90_fraction": 0.19465,
+  "climatology": "HRRR 2015-2026, 4,257 days",
+  "climatology_years": 12,
+  "aggregation": "max over the four most recent 00/06/12/18Z analyses",
+  "source": "HDWI = wind x VPD from HRRR 3 km, ranked against a per-cell HRRR climatology"
+}
