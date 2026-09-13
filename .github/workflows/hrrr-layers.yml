@@ -1,0 +1,115 @@
+# HRRR-driven layers: wind-slope alignment and today's HDWI percentile.
+#
+# SEPARATE FROM sfdi-daily.yml ON PURPOSE
+#   * These need no state. SFDI carries fuel moisture forward and a failed
+#     run has consequences; these two are recomputed from scratch every time,
+#     so a bad run costs nothing but the next run fixes itself.
+#   * They deserve to run more often. Both describe CURRENT conditions --
+#     wind direction turns through the day -- so a once-daily update would
+#     leave them 12+ hours stale by evening, which defeats the point of
+#     building them on HRRR at all.
+#   * They depend on pygrib, which needs the eccodes C library. If that ever
+#     fails to install, this workflow breaks and the SFDI pipeline keeps
+#     running untouched. Isolating the fragile dependency is deliberate.
+name: HRRR layers
+
+on:
+  schedule:
+    # Every 6 hours, offset to land after the 00/06/12/18Z HRRR cycles have
+    # published (they appear 50-90 min after cycle time).
+    - cron: "30 2,8,14,20 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: hrrr-layers
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  SFDI_WORK: ${{ github.workspace }}/work
+  STATE_TAG: sfdi-state
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install --quiet numpy scipy pillow
+          # pygrib pulls the eccodes C library. It installs cleanly from
+          # PyPI wheels on Linux, but this is the least predictable step
+          # here, so fail loudly rather than silently skipping both layers.
+          pip install --quiet pygrib
+          python -c "import pygrib, scipy, numpy, PIL; print('GRIB stack ok')"
+
+      - name: Stage inputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "$SFDI_WORK/meta" "$SFDI_WORK/breakpoints" "$SFDI_WORK/daily"
+          cp data/climate_class.npy data/lat.npy data/lons.npy "$SFDI_WORK/meta/"
+          # Both large static inputs live in the release, not the repo.
+          gh release download "$STATE_TAG" \
+            --pattern "terrain_450m.npz" --pattern "hdwi_hrrr_lookup.npz" \
+            --dir "$SFDI_WORK/breakpoints" --clobber
+          ls -lh "$SFDI_WORK/breakpoints"
+
+      - name: Wind-slope alignment
+        id: wsa
+        working-directory: sfdi
+        continue-on-error: true
+        run: python daily_wsa_hrrr.py run
+
+      - name: HDWI percentile (HRRR)
+        id: hdwi
+        working-directory: sfdi
+        continue-on-error: true
+        run: python daily_hdwi_hrrr.py
+
+      - name: Check something was produced
+        run: |
+          # Each layer is allowed to fail on its own -- HRRR cycles are
+          # occasionally missing -- but if BOTH failed the run is not worth
+          # publishing and should say so.
+          if [ ! -f "$SFDI_WORK/daily/wsa_latest.png" ] && \
+             [ ! -f "$SFDI_WORK/daily/hdwi_hrrr_latest.png" ]; then
+            echo "::error::both layers failed; nothing to publish"
+            exit 1
+          fi
+          ls -lh "$SFDI_WORK/daily"
+
+      - name: Publish the alignment PNG to the release
+        if: steps.wsa.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # ~6 MB and changes every run. In the repo that would be gigabytes
+          # of git history a year; as a release asset it replaces in place.
+          gh release upload "$STATE_TAG" \
+            "$SFDI_WORK/daily/wsa_latest.png" --clobber
+
+      - name: Commit manifests and the HDWI map
+        run: |
+          for f in wsa_latest.json hdwi_hrrr_latest.png hdwi_hrrr_latest.json; do
+            [ -f "$SFDI_WORK/daily/$f" ] && cp "$SFDI_WORK/daily/$f" data/ || true
+          done
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data/ || true
+          if git diff --staged --quiet; then
+            echo "nothing changed"
+          else
+            git commit -m "HRRR layers $(date -u +%Y-%m-%dT%H:%MZ)"
+            # The SFDI workflow commits to data/ too. Rebase rather than
+            # force: whichever job lands second should keep the other's work.
+            git pull --rebase --autostash
+            git push
+          fi
