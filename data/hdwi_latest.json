@@ -1,6 +1,6 @@
 {
-  "valid_date": "2026-09-20",
-  "generated_utc": "2026-09-22T18:23:36.686168Z",
+  "valid_date": "2026-09-21",
+  "generated_utc": "2026-09-23T18:43:10.548106Z",
   "bounds": [
     [
       31.024999618530273,
@@ -23,18 +23,18 @@
     "#D72D23",
     "#FFFFFF"
   ],
-  "above_p90_cells": 840,
-  "above_p90_fraction": 0.00405,
+  "above_p90_cells": 3,
+  "above_p90_fraction": 1e-05,
   "band_cell_counts": {
-    "90-95th": 696,
-    "95-97th": 92,
-    "97-99th": 52,
+    "90-95th": 3,
+    "95-97th": 0,
+    "97-99th": 0,
     "99th+": 0
   },
   "band_fractions": {
-    "90-95th": 0.00336,
-    "95-97th": 0.00044,
-    "97-99th": 0.00025,
+    "90-95th": 1e-05,
+    "95-97th": 0.0,
+    "97-99th": 0.0,
     "99th+": 0.0
   },
   "climatology": "gridMET 1979-2017",
