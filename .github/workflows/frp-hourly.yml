@@ -1,0 +1,140 @@
+# .github/workflows/frp-hourly.yml
+#
+# Per-fire observed Fire Radiative Power -> data/frp_latest.json
+#
+# Separate from pft-hourly.yml and hrrr-layers.yml for the same reason those
+# are separate from each other: this one depends on a different fragile thing
+# (the FIRMS API and a MAP_KEY that can expire), and a failure here must not
+# take down PFT or the HRRR layers.
+#
+# ---------------------------------------------------------------------------
+# Schedule
+# ---------------------------------------------------------------------------
+# Unlike PFT, there is no single hour worth targeting. VIIRS sees a fire when
+# it passes overhead, not when the weather is most interesting: Suomi-NPP and
+# NOAA-20 each cross roughly twice a day, at times that drift. So this runs
+# more often than PFT, and each run simply picks up whatever the most recent
+# overpass saw.
+#
+# Every two hours, at :40. Off the hour on purpose -- GitHub's scheduler is
+# heavily oversubscribed at :00 and jobs get delayed.
+#
+# ---------------------------------------------------------------------------
+# Secret required
+# ---------------------------------------------------------------------------
+# A FIRMS MAP_KEY -- free, from a NASA Earthdata login:
+#   https://firms.modaps.eosdis.nasa.gov/api/map_key/
+#
+# This repo already has one for the hotspots job, so there is no reason to add
+# a second copy of the same key. The job-level env below tries the usual names
+# and uses whichever exists. If yours is named something else, add it to that
+# one line -- it is the only place the name appears.
+#
+# It belongs in a secret, never in index.html: a key committed to a public
+# static site is a key published to everyone who opens the page.
+name: FRP (per-fire observed fire radiative power)
+
+on:
+  schedule:
+    - cron: '40 */2 * * *'
+  workflow_dispatch:        # lets you run it by hand from the Actions tab
+
+concurrency:
+  group: frp
+  cancel-in-progress: false   # never kill a run mid-commit
+
+permissions:
+  contents: write
+
+jobs:
+  frp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      # Whichever FIRMS secret this repo already has. An unset secret is an
+      # empty string, so || falls through to the next name. Add yours here if
+      # it is not listed -- this is the only line that needs to change, and
+      # the "key is present" step below will tell you plainly if none matched.
+      FIRMS_MAP_KEY: >-
+        ${{ secrets.FIRMS_MAP_KEY || secrets.FIRMS_KEY || secrets.FIRMS_API_KEY
+         || secrets.NASA_FIRMS_KEY || secrets.FIRMS_TOKEN || secrets.MAP_KEY }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # No cache: pip here. That option makes setup-python hash a
+      # requirements.txt or pyproject.toml to key the cache, and this job has
+      # neither -- it installs nothing at all. With no such file the step
+      # fails outright, before any of the real work runs.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # No third-party packages at all: the assignment is pure arithmetic and
+      # both feeds are plain CSV/GeoJSON over urllib. Nothing to break on a
+      # wheel that stops building.
+      - name: Check the toolchain
+        run: python -c "import csv, json, math, urllib.request; print('stdlib ok')"
+
+      # Guard against the most likely cause of a confusing failure. FIRMS
+      # answers a bad key with an HTML page and HTTP 200, so without this the
+      # run would look like "no fires are burning" rather than "the key is
+      # wrong". The script checks for that too; this just fails earlier and
+      # more plainly.
+      - name: Check the FIRMS key is present
+        run: |
+          if [ -z "$FIRMS_MAP_KEY" ]; then
+            echo "::error::No FIRMS key found under any of the names tried."
+            echo "Open Settings -> Secrets and variables -> Actions, note the"
+            echo "exact name of the FIRMS secret this repo already uses for the"
+            echo "hotspots job, and add that name to the env: block at the top"
+            echo "of this workflow."
+            exit 1
+          fi
+          echo "key present (${#FIRMS_MAP_KEY} characters)"
+
+      - name: Run the assignment tests
+        # These are the tests that guarantee no fire is credited with a
+        # neighbour's heat. They need no network and take under a second, so
+        # there is no reason not to run them before every publish.
+        run: python -m unittest discover -s sfdi -p 'test_frp_assign.py' -v
+
+      - name: Compute per-fire FRP
+        run: python sfdi/compute_frp_fires.py --out data/frp_latest.json
+
+      - name: Sanity-check the output before committing
+        run: |
+          python - <<'PY'
+          import json, sys
+          d = json.load(open('data/frp_latest.json'))
+          fires = d.get('fires', {})
+          print(f"{d.get('n_with_frp')} fires with a value of {d.get('n_fires')}")
+          print(f"{d.get('n_assigned')} detections assigned, "
+                f"{d.get('n_unassigned')} unassigned, "
+                f"{d.get('n_contested')} contested")
+          # Refuse to publish an empty or broken file. Overwriting a good file
+          # with a bad one is worse than skipping a cycle. A genuinely quiet
+          # day is possible, so the floor is low -- this catches breakage, not
+          # a slow fire season.
+          if not fires:
+              sys.exit("REFUSING: no fire had any detection assigned")
+          vals = [f['frp_mw'] for f in fires.values()
+                  if isinstance(f.get('frp_mw'), (int, float))]
+          if not vals or max(vals) <= 0:
+              sys.exit("REFUSING: every FRP is zero or negative")
+          PY
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/frp_latest.json
+          # --quiet exits non-zero when nothing is staged, which is the normal
+          # case when a cycle lands between overpasses and sees no new data.
+          if git diff --cached --quiet; then
+            echo "no change; nothing to commit"
+          else
+            git commit -m "FRP: $(python -c "import json;d=json.load(open('data/frp_latest.json'));print(d['generated_utc'],d['n_with_frp'],'fires')")"
+            git push
+          fi
