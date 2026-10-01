@@ -1,0 +1,111 @@
+# .github/workflows/pft-hourly.yml
+#
+# Per-fire PyroCb Firepower Threshold -> data/pft_latest.json
+#
+# Separate from hrrr-layers.yml on purpose, same reasoning as that split: this
+# job has no state to protect, it depends on a different fragile thing (the
+# AWS HRRR byte-range fetch plus pygrib), and a failure here must not take
+# down the wind-slope and HDWI layers.
+#
+# ---------------------------------------------------------------------------
+# Schedule
+# ---------------------------------------------------------------------------
+# Every run targets the SAME valid hour: 21Z, roughly 2pm PDT / 3pm MDT, peak
+# fire weather. That is the regime the solver was validated in -- the one
+# sounding case that ran high was a 0600 LST nocturnal-inversion profile.
+#
+# Four runs a day with progressively shorter lead time to that same hour:
+#   14:25 UTC -> 12Z cycle, f09   (morning forecast of this afternoon)
+#   17:25 UTC -> 15Z cycle, f06
+#   20:25 UTC -> 18Z cycle, f03
+#   23:25 UTC -> 21Z cycle, f00   (the analysis itself)
+#
+# So the morning runs are a forecast for the afternoon peak, and the last run
+# replaces it with the analysis. The script picks the cycle itself; it skips
+# anything younger than ~2 h because HRRR posts 45-90 min after the hour.
+#
+# Minute :25 rather than :00 deliberately -- GitHub's scheduler is heavily
+# oversubscribed on the hour and jobs get delayed.
+name: PFT (per-fire pyroCb firepower threshold)
+
+on:
+  schedule:
+    - cron: '25 14,17,20,23 * * *'
+  workflow_dispatch:        # lets you run it by hand from the Actions tab
+
+concurrency:
+  group: pft
+  cancel-in-progress: false   # never kill a run mid-commit
+
+permissions:
+  contents: write
+
+jobs:
+  pft:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30      # the GRIB subset is ~155 MB; 30 min is generous
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # pygrib needs ecCodes, which pip cannot supply on its own. conda-forge
+      # is the reliable route -- the same reason the fireline env exists
+      # locally. If hrrr-layers.yml already has a working Python+pygrib setup,
+      # prefer copying that block verbatim over this one: a setup that is
+      # already proven in your repo beats a second one that merely looks right.
+      - name: Set up micromamba with pygrib
+        uses: mamba-org/setup-micromamba@v1
+        with:
+          environment-name: pft
+          create-args: >-
+            python=3.12
+            numpy
+            scipy
+            pygrib
+          condarc: |
+            channels:
+              - conda-forge
+          cache-environment: true
+
+      - name: Compute per-fire PFT
+        shell: bash -el {0}
+        run: |
+          python sfdi/compute_pft_fires.py \
+            --out data/pft_latest.json \
+            --workdir "${RUNNER_TEMP}"
+        # --workdir puts the 155 MB GRIB subset in the runner's temp dir so it
+        # can never be picked up by `git add`.
+
+      - name: Sanity-check the output before committing
+        shell: bash -el {0}
+        run: |
+          python - <<'PY'
+          import json, sys
+          d = json.load(open('data/pft_latest.json'))
+          n_ok = d.get('n_ok', 0)
+          fires = d.get('fires', {})
+          print(f"{n_ok} fires with a value, {d.get('n_failed')} without")
+          print(f"valid {d.get('valid_utc')} from {d.get('cycle_utc')} "
+                f"f{d.get('forecast_hour'):02d}")
+          # Refuse to publish an empty or obviously broken file. Overwriting a
+          # good file with a bad one is worse than skipping a cycle.
+          if n_ok < 5 or not fires:
+              sys.exit(f"REFUSING: only {n_ok} usable values")
+          vals = [f['pft_gw'] for f in fires.values() if f.get('status') == 'ok']
+          if vals and max(vals) <= 0:
+              sys.exit("REFUSING: every PFT is zero or negative")
+          PY
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pft_latest.json
+          # --quiet exits non-zero when there is nothing staged, which is the
+          # normal case if a cycle produced identical output. Not an error.
+          if git diff --cached --quiet; then
+            echo "no change; nothing to commit"
+          else
+            git commit -m "PFT: $(python -c "import json;d=json.load(open('data/pft_latest.json'));print(d['valid_utc'],d['n_ok'],'fires')")"
+            git push
+          fi
