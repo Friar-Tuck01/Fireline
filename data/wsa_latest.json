@@ -1,6 +1,7 @@
 {
-  "valid_date": "2026-10-02",
-  "generated_utc": "2026-10-04T18:26:23.643373Z",
+  "valid_date": "2026-10-04",
+  "model_cycle_utc": "2026-10-04T18:00:00Z",
+  "generated_utc": "2026-10-04T23:27:02.792994Z",
   "bounds": [
     [
       31.0,
@@ -28,14 +29,15 @@
     "#6E32BE"
   ],
   "band_cell_counts": {
-    "weak upslope": 1636272,
-    "moderate upslope": 319271,
-    "strong upslope": 41515,
-    "weak lee": 1655505,
-    "moderate lee": 316340,
-    "strong lee": 39733
+    "weak upslope": 1816214,
+    "moderate upslope": 374989,
+    "strong upslope": 49536,
+    "weak lee": 2341524,
+    "moderate lee": 491019,
+    "strong lee": 69235
   },
   "resolution_m": 450,
-  "steep_subcell_fraction": 0.1827,
-  "source": "W . grad(h) from gridMET wind and SRTM/3DEP terrain; positive = upslope-aligned, negative = lee slope"
+  "hours_evaluated": 24,
+  "aggregation": "largest-magnitude forecast hour, sign preserved",
+  "source": "W.grad(h); HRRR 3 km 10 m wind via NOAA NOMADS, terrain from SRTM/3DEP"
 }
