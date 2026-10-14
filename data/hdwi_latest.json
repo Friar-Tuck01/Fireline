@@ -1,6 +1,6 @@
 {
-  "valid_date": "2026-10-11",
-  "generated_utc": "2026-10-13T20:24:59.296297Z",
+  "valid_date": "2026-10-12",
+  "generated_utc": "2026-10-14T19:00:53.805633Z",
   "bounds": [
     [
       31.024999618530273,
@@ -23,19 +23,19 @@
     "#D72D23",
     "#FFFFFF"
   ],
-  "above_p90_cells": 11310,
-  "above_p90_fraction": 0.05454,
+  "above_p90_cells": 6795,
+  "above_p90_fraction": 0.03277,
   "band_cell_counts": {
-    "90-95th": 7057,
-    "95-97th": 2873,
-    "97-99th": 1353,
-    "99th+": 27
+    "90-95th": 5365,
+    "95-97th": 960,
+    "97-99th": 470,
+    "99th+": 0
   },
   "band_fractions": {
-    "90-95th": 0.03403,
-    "95-97th": 0.01385,
-    "97-99th": 0.00652,
-    "99th+": 0.00013
+    "90-95th": 0.02587,
+    "95-97th": 0.00463,
+    "97-99th": 0.00227,
+    "99th+": 0.0
   },
   "climatology": "gridMET 1979-2017",
   "source": "HDWI = wind x VPD, gridMET daily max temp / min RH / mean wind; percentiles vs. per-cell 1979-2017"

@@ -1,7 +1,6 @@
 {
-  "valid_date": "2026-10-14",
-  "model_cycle_utc": "2026-10-14T12:00:00Z",
-  "generated_utc": "2026-10-14T18:50:49.894668Z",
+  "valid_date": "2026-10-12",
+  "generated_utc": "2026-10-14T19:01:07.748171Z",
   "bounds": [
     [
       31.0,
@@ -29,15 +28,14 @@
     "#6E32BE"
   ],
   "band_cell_counts": {
-    "weak upslope": 1911568,
-    "moderate upslope": 511954,
-    "strong upslope": 108451,
-    "weak lee": 2504065,
-    "moderate lee": 717936,
-    "strong lee": 172073
+    "weak upslope": 1799880,
+    "moderate upslope": 409649,
+    "strong upslope": 87315,
+    "weak lee": 1793116,
+    "moderate lee": 402700,
+    "strong lee": 87970
   },
   "resolution_m": 450,
-  "hours_evaluated": 24,
-  "aggregation": "largest-magnitude forecast hour, sign preserved",
-  "source": "W.grad(h); HRRR 3 km 10 m wind via NOAA NOMADS, terrain from SRTM/3DEP"
+  "steep_subcell_fraction": 0.1827,
+  "source": "W . grad(h) from gridMET wind and SRTM/3DEP terrain; positive = upslope-aligned, negative = lee slope"
 }
