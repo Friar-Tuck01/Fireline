@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T14:23:19.992544+00:00",
+  "generatedAt": "2026-10-14T19:13:17.464587+00:00",
   "hotspots": [
     {
       "lat": 45.6286,
@@ -623,15 +623,6 @@
       "recurring": false
     },
     {
-      "lat": 34.04226,
-      "lon": -117.81992,
-      "frp": 0.34,
-      "confidence": "n",
-      "date": "2026-10-14",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
       "lat": 34.08284,
       "lon": -117.49882,
       "frp": 0.82,
@@ -710,15 +701,6 @@
       "confidence": "n",
       "date": "2026-10-14",
       "daysSeen": 5,
-      "recurring": true
-    },
-    {
-      "lat": 45.23087,
-      "lon": -123.16614,
-      "frp": 1.56,
-      "confidence": "n",
-      "date": "2026-10-14",
-      "daysSeen": 6,
       "recurring": true
     }
   ]
