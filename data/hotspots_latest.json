@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T11:01:36.209939+00:00",
+  "generatedAt": "2026-10-15T16:31:20.447847+00:00",
   "hotspots": [
     {
       "lat": 48.11273,
@@ -137,360 +137,18 @@
       "recurring": false
     },
     {
-      "lat": 48.57178,
-      "lon": -103.35763,
-      "frp": 0.46,
+      "lat": 38.93888,
+      "lon": -112.81675,
+      "frp": 1.92,
       "confidence": "n",
       "date": "2026-10-15",
-      "daysSeen": 6,
+      "daysSeen": 11,
       "recurring": true
-    },
-    {
-      "lat": 48.63549,
-      "lon": -103.31022,
-      "frp": 0.97,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 3,
-      "recurring": true
-    },
-    {
-      "lat": 49.28368,
-      "lon": -102.36889,
-      "frp": 0.42,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 47.29885,
-      "lon": -103.04816,
-      "frp": 0.53,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 47.67164,
-      "lon": -102.64097,
-      "frp": 0.74,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 47.78057,
-      "lon": -124.30956,
-      "frp": 0.91,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 47.78614,
-      "lon": -124.31328,
-      "frp": 1.03,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 48.00543,
-      "lon": -102.79052,
-      "frp": 0.79,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 48.00665,
-      "lon": -102.79568,
-      "frp": 0.79,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 2,
-      "recurring": false
-    },
-    {
-      "lat": 48.09206,
-      "lon": -103.597,
-      "frp": 0.98,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 9,
-      "recurring": true
-    },
-    {
-      "lat": 48.11531,
-      "lon": -102.87,
-      "frp": 1.24,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 4,
-      "recurring": true
-    },
-    {
-      "lat": 48.16521,
-      "lon": -102.7851,
-      "frp": 0.24,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 48.1866,
-      "lon": -103.7952,
-      "frp": 0.97,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 3,
-      "recurring": true
-    },
-    {
-      "lat": 48.27214,
-      "lon": -118.39848,
-      "frp": 1.01,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 2,
-      "recurring": false
-    },
-    {
-      "lat": 48.27935,
-      "lon": -118.38592,
-      "frp": 2.21,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 2,
-      "recurring": false
-    },
-    {
-      "lat": 48.27623,
-      "lon": -118.39749,
-      "frp": 1.01,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 2,
-      "recurring": false
-    },
-    {
-      "lat": 48.88718,
-      "lon": -122.74118,
-      "frp": 1.07,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 2,
-      "recurring": false
-    },
-    {
-      "lat": 49.20007,
-      "lon": -116.66895,
-      "frp": 1.5,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 2,
-      "recurring": false
-    },
-    {
-      "lat": 49.268,
-      "lon": -119.96001,
-      "frp": 5.41,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 2,
-      "recurring": false
-    },
-    {
-      "lat": 42.68444,
-      "lon": -111.59119,
-      "frp": 19.93,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 9,
-      "recurring": true
-    },
-    {
-      "lat": 42.68773,
-      "lon": -111.59017,
-      "frp": 19.93,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 9,
-      "recurring": true
-    },
-    {
-      "lat": 43.14598,
-      "lon": -115.66711,
-      "frp": 1.27,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 3,
-      "recurring": true
-    },
-    {
-      "lat": 43.18039,
-      "lon": -115.73161,
-      "frp": 0.49,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 7,
-      "recurring": true
-    },
-    {
-      "lat": 43.69932,
-      "lon": -116.28851,
-      "frp": 0.88,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 3,
-      "recurring": true
-    },
-    {
-      "lat": 43.78696,
-      "lon": -118.95452,
-      "frp": 2.61,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 2,
-      "recurring": false
-    },
-    {
-      "lat": 43.79166,
-      "lon": -118.96102,
-      "frp": 2.17,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 43.79963,
-      "lon": -118.95957,
-      "frp": 2.19,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 3,
-      "recurring": true
-    },
-    {
-      "lat": 43.80034,
-      "lon": -118.96684,
-      "frp": 2.77,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 43.89575,
-      "lon": -121.55273,
-      "frp": 1.29,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 2,
-      "recurring": false
-    },
-    {
-      "lat": 43.89622,
-      "lon": -121.55909,
-      "frp": 2.47,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 2,
-      "recurring": false
-    },
-    {
-      "lat": 43.89669,
-      "lon": -121.56543,
-      "frp": 2.47,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 2,
-      "recurring": false
-    },
-    {
-      "lat": 44.03661,
-      "lon": -118.79122,
-      "frp": 3.56,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 44.03728,
-      "lon": -118.79784,
-      "frp": 3.56,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 44.95393,
-      "lon": -116.20187,
-      "frp": 1.55,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 3,
-      "recurring": true
-    },
-    {
-      "lat": 44.96683,
-      "lon": -121.91499,
-      "frp": 1.09,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 44.96815,
-      "lon": -121.91594,
-      "frp": 0.84,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 4,
-      "recurring": true
-    },
-    {
-      "lat": 45.23035,
-      "lon": -123.16512,
-      "frp": 2.18,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 7,
-      "recurring": true
-    },
-    {
-      "lat": 46.7494,
-      "lon": -120.78315,
-      "frp": 0.94,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 46.89774,
-      "lon": -120.92637,
-      "frp": 2.51,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 2,
-      "recurring": false
     },
     {
       "lat": 40.6896,
-      "lon": -121.17369,
-      "frp": 1.81,
+      "lon": -121.17368,
+      "frp": 1.82,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 3,
@@ -499,7 +157,7 @@
     {
       "lat": 40.82335,
       "lon": -114.25417,
-      "frp": 0.6,
+      "frp": 0.61,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 5,
@@ -508,7 +166,7 @@
     {
       "lat": 40.93993,
       "lon": -110.3549,
-      "frp": 1.41,
+      "frp": 1.42,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 1,
@@ -517,7 +175,7 @@
     {
       "lat": 40.94579,
       "lon": -110.34761,
-      "frp": 0.93,
+      "frp": 0.94,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 1,
@@ -525,7 +183,7 @@
     },
     {
       "lat": 41.23592,
-      "lon": -123.56069,
+      "lon": -123.56068,
       "frp": 0.7,
       "confidence": "n",
       "date": "2026-10-15",
@@ -535,7 +193,7 @@
     {
       "lat": 41.23634,
       "lon": -123.56688,
-      "frp": 1.55,
+      "frp": 1.56,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 2,
@@ -569,9 +227,9 @@
       "recurring": false
     },
     {
-      "lat": 41.43264,
-      "lon": -121.7904,
-      "frp": 2.09,
+      "lat": 41.43088,
+      "lon": -121.79229,
+      "frp": 3.3,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 2,
@@ -580,7 +238,7 @@
     {
       "lat": 41.42911,
       "lon": -121.80239,
-      "frp": 2.34,
+      "frp": 2.35,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 2,
@@ -596,44 +254,116 @@
       "recurring": false
     },
     {
-      "lat": 35.51712,
-      "lon": -113.3123,
-      "frp": 2.16,
+      "lat": 46.7494,
+      "lon": -120.78315,
+      "frp": 0.94,
       "confidence": "n",
       "date": "2026-10-15",
-      "daysSeen": 7,
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 46.89774,
+      "lon": -120.92637,
+      "frp": 2.52,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 47.29885,
+      "lon": -103.04816,
+      "frp": 0.54,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 47.67164,
+      "lon": -102.64097,
+      "frp": 0.74,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 47.78016,
+      "lon": -124.30624,
+      "frp": 1.68,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 47.78615,
+      "lon": -124.31327,
+      "frp": 1.04,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 48.00543,
+      "lon": -102.79052,
+      "frp": 0.8,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 48.00665,
+      "lon": -102.79568,
+      "frp": 0.8,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 48.09206,
+      "lon": -103.597,
+      "frp": 0.99,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 9,
       "recurring": true
     },
     {
-      "lat": 36.35671,
-      "lon": -114.91259,
-      "frp": 1.3,
+      "lat": 48.11531,
+      "lon": -102.87,
+      "frp": 1.25,
       "confidence": "n",
       "date": "2026-10-15",
-      "daysSeen": 12,
+      "daysSeen": 4,
       "recurring": true
     },
     {
-      "lat": 36.38162,
-      "lon": -114.87567,
-      "frp": 0.37,
+      "lat": 48.16521,
+      "lon": -102.7851,
+      "frp": 0.25,
       "confidence": "n",
       "date": "2026-10-15",
-      "daysSeen": 7,
-      "recurring": true
+      "daysSeen": 1,
+      "recurring": false
     },
     {
-      "lat": 36.71245,
-      "lon": -121.76853,
-      "frp": 0.63,
+      "lat": 48.1866,
+      "lon": -103.7952,
+      "frp": 0.98,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 3,
       "recurring": true
     },
     {
-      "lat": 37.02438,
-      "lon": -120.19755,
+      "lat": 48.27214,
+      "lon": -118.39846,
       "frp": 1.01,
       "confidence": "n",
       "date": "2026-10-15",
@@ -641,112 +371,76 @@
       "recurring": false
     },
     {
-      "lat": 37.45552,
-      "lon": -121.93407,
-      "frp": 0.54,
+      "lat": 48.27935,
+      "lon": -118.38592,
+      "frp": 2.21,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 48.27623,
+      "lon": -118.39749,
+      "frp": 1.01,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 48.57178,
+      "lon": -103.35763,
+      "frp": 0.46,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 6,
       "recurring": true
     },
     {
-      "lat": 38.00439,
-      "lon": -121.93619,
-      "frp": 0.63,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 2,
-      "recurring": false
-    },
-    {
-      "lat": 38.01583,
-      "lon": -122.11161,
-      "frp": 1.35,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 2,
-      "recurring": false
-    },
-    {
-      "lat": 38.27502,
-      "lon": -121.19431,
-      "frp": 0.36,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 38.35982,
-      "lon": -121.53533,
-      "frp": 0.72,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 38.51341,
-      "lon": -121.19184,
-      "frp": 0.6,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 1,
-      "recurring": false
-    },
-    {
-      "lat": 38.81466,
-      "lon": -121.88924,
-      "frp": 0.77,
+      "lat": 48.63549,
+      "lon": -103.31022,
+      "frp": 0.98,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 3,
       "recurring": true
     },
     {
-      "lat": 38.93888,
-      "lon": -112.81675,
-      "frp": 1.92,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 11,
-      "recurring": true
-    },
-    {
-      "lat": 39.05231,
-      "lon": -122.11124,
+      "lat": 48.88718,
+      "lon": -122.74118,
       "frp": 1.07,
       "confidence": "n",
       "date": "2026-10-15",
-      "daysSeen": 3,
-      "recurring": true
+      "daysSeen": 2,
+      "recurring": false
     },
     {
-      "lat": 39.62028,
-      "lon": -119.26093,
-      "frp": 2.0,
-      "confidence": "n",
-      "date": "2026-10-15",
-      "daysSeen": 9,
-      "recurring": true
-    },
-    {
-      "lat": 39.62564,
-      "lon": -121.75092,
-      "frp": 0.35,
+      "lat": 49.20007,
+      "lon": -116.66895,
+      "frp": 1.5,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 2,
       "recurring": false
     },
     {
-      "lat": 39.74043,
-      "lon": -121.95083,
-      "frp": 0.31,
+      "lat": 49.26801,
+      "lon": -119.96001,
+      "frp": 5.42,
       "confidence": "n",
       "date": "2026-10-15",
-      "daysSeen": 5,
-      "recurring": true
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 49.28368,
+      "lon": -102.36889,
+      "frp": 0.43,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
     },
     {
       "lat": 31.41486,
@@ -758,9 +452,27 @@
       "recurring": false
     },
     {
+      "lat": 31.84303,
+      "lon": -116.58389,
+      "frp": 1.02,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 4,
+      "recurring": true
+    },
+    {
+      "lat": 31.98788,
+      "lon": -116.8442,
+      "frp": 4.81,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 8,
+      "recurring": true
+    },
+    {
       "lat": 32.49713,
       "lon": -116.32056,
-      "frp": 0.51,
+      "frp": 0.52,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 1,
@@ -769,7 +481,7 @@
     {
       "lat": 32.49755,
       "lon": -102.0853,
-      "frp": 1.32,
+      "frp": 1.33,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 2,
@@ -778,7 +490,7 @@
     {
       "lat": 32.52613,
       "lon": -116.77486,
-      "frp": 0.65,
+      "frp": 0.66,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 1,
@@ -787,7 +499,7 @@
     {
       "lat": 32.52675,
       "lon": -116.77894,
-      "frp": 0.65,
+      "frp": 0.66,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 3,
@@ -813,8 +525,8 @@
     },
     {
       "lat": 32.55782,
-      "lon": -116.4253,
-      "frp": 0.5,
+      "lon": -116.42529,
+      "frp": 0.46,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 1,
@@ -831,8 +543,8 @@
     },
     {
       "lat": 32.84767,
-      "lon": -104.39434,
-      "frp": 1.09,
+      "lon": -104.39433,
+      "frp": 1.1,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 5,
@@ -867,7 +579,7 @@
     },
     {
       "lat": 33.49097,
-      "lon": -117.61676,
+      "lon": -117.61674,
       "frp": 0.97,
       "confidence": "n",
       "date": "2026-10-15",
@@ -877,7 +589,7 @@
     {
       "lat": 33.61465,
       "lon": -117.82247,
-      "frp": 1.05,
+      "frp": 1.06,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 7,
@@ -886,7 +598,7 @@
     {
       "lat": 33.71687,
       "lon": -117.70913,
-      "frp": 1.06,
+      "frp": 1.07,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 7,
@@ -913,7 +625,7 @@
     {
       "lat": 33.79271,
       "lon": -118.35162,
-      "frp": 0.24,
+      "frp": 0.25,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 1,
@@ -922,7 +634,7 @@
     {
       "lat": 33.79503,
       "lon": -117.4751,
-      "frp": 1.85,
+      "frp": 1.86,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 4,
@@ -940,7 +652,7 @@
     {
       "lat": 33.85196,
       "lon": -118.3333,
-      "frp": 1.21,
+      "frp": 1.22,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 4,
@@ -949,7 +661,7 @@
     {
       "lat": 33.95618,
       "lon": -117.12059,
-      "frp": 0.46,
+      "frp": 0.47,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 2,
@@ -958,7 +670,7 @@
     {
       "lat": 34.03643,
       "lon": -118.10438,
-      "frp": 0.44,
+      "frp": 0.45,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 2,
@@ -967,7 +679,7 @@
     {
       "lat": 34.03658,
       "lon": -117.55706,
-      "frp": 0.16,
+      "frp": 0.17,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 1,
@@ -984,7 +696,7 @@
     },
     {
       "lat": 34.11583,
-      "lon": -117.92426,
+      "lon": -117.92424,
       "frp": 0.63,
       "confidence": "n",
       "date": "2026-10-15",
@@ -1021,7 +733,7 @@
     {
       "lat": 34.31189,
       "lon": -119.26824,
-      "frp": 0.22,
+      "frp": 0.23,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 2,
@@ -1039,7 +751,7 @@
     {
       "lat": 34.33316,
       "lon": -118.51903,
-      "frp": 1.19,
+      "frp": 1.2,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 5,
@@ -1048,7 +760,7 @@
     {
       "lat": 34.33665,
       "lon": -118.5183,
-      "frp": 1.19,
+      "frp": 1.2,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 4,
@@ -1092,7 +804,7 @@
     },
     {
       "lat": 35.01067,
-      "lon": -111.65493,
+      "lon": -111.65492,
       "frp": 1.23,
       "confidence": "n",
       "date": "2026-10-15",
@@ -1102,7 +814,7 @@
     {
       "lat": 35.01278,
       "lon": -111.65772,
-      "frp": 6.04,
+      "frp": 6.05,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 2,
@@ -1111,7 +823,7 @@
     {
       "lat": 35.01722,
       "lon": -111.66149,
-      "frp": 6.6,
+      "frp": 6.62,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 2,
@@ -1120,7 +832,7 @@
     {
       "lat": 35.02168,
       "lon": -111.66537,
-      "frp": 6.6,
+      "frp": 6.62,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 2,
@@ -1138,7 +850,7 @@
     {
       "lat": 35.02521,
       "lon": -111.66439,
-      "frp": 1.69,
+      "frp": 1.7,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 2,
@@ -1174,28 +886,370 @@
     {
       "lat": 35.03672,
       "lon": -111.66634,
-      "frp": 3.1,
+      "frp": 3.11,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 1,
       "recurring": false
     },
     {
-      "lat": 31.84303,
-      "lon": -116.58389,
-      "frp": 1.01,
+      "lat": 35.51712,
+      "lon": -113.3123,
+      "frp": 2.16,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 7,
+      "recurring": true
+    },
+    {
+      "lat": 36.35671,
+      "lon": -114.91259,
+      "frp": 1.3,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 12,
+      "recurring": true
+    },
+    {
+      "lat": 36.38162,
+      "lon": -114.87567,
+      "frp": 0.37,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 7,
+      "recurring": true
+    },
+    {
+      "lat": 36.71245,
+      "lon": -121.76853,
+      "frp": 0.63,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 3,
+      "recurring": true
+    },
+    {
+      "lat": 37.02438,
+      "lon": -120.19755,
+      "frp": 1.02,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 37.45552,
+      "lon": -121.93407,
+      "frp": 0.54,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 6,
+      "recurring": true
+    },
+    {
+      "lat": 38.00439,
+      "lon": -121.93619,
+      "frp": 0.63,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 38.01742,
+      "lon": -122.11111,
+      "frp": 1.58,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 38.27502,
+      "lon": -121.19431,
+      "frp": 0.37,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 38.35982,
+      "lon": -121.53532,
+      "frp": 0.73,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 38.51341,
+      "lon": -121.19184,
+      "frp": 0.6,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 38.81466,
+      "lon": -121.88924,
+      "frp": 0.77,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 3,
+      "recurring": true
+    },
+    {
+      "lat": 39.05231,
+      "lon": -122.11124,
+      "frp": 1.08,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 3,
+      "recurring": true
+    },
+    {
+      "lat": 39.62028,
+      "lon": -119.26093,
+      "frp": 1.99,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 9,
+      "recurring": true
+    },
+    {
+      "lat": 39.62565,
+      "lon": -121.75092,
+      "frp": 0.35,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 39.74043,
+      "lon": -121.95083,
+      "frp": 0.31,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 5,
+      "recurring": true
+    },
+    {
+      "lat": 42.68444,
+      "lon": -111.59119,
+      "frp": 19.93,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 9,
+      "recurring": true
+    },
+    {
+      "lat": 42.68773,
+      "lon": -111.59017,
+      "frp": 19.93,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 9,
+      "recurring": true
+    },
+    {
+      "lat": 43.14598,
+      "lon": -115.66711,
+      "frp": 1.27,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 3,
+      "recurring": true
+    },
+    {
+      "lat": 43.18039,
+      "lon": -115.73161,
+      "frp": 0.49,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 7,
+      "recurring": true
+    },
+    {
+      "lat": 43.69932,
+      "lon": -116.28851,
+      "frp": 0.89,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 3,
+      "recurring": true
+    },
+    {
+      "lat": 43.78696,
+      "lon": -118.95452,
+      "frp": 2.62,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 43.79166,
+      "lon": -118.96102,
+      "frp": 2.18,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 43.79963,
+      "lon": -118.95956,
+      "frp": 2.19,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 3,
+      "recurring": true
+    },
+    {
+      "lat": 43.80034,
+      "lon": -118.96684,
+      "frp": 2.77,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 43.89575,
+      "lon": -121.55273,
+      "frp": 1.3,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 43.89622,
+      "lon": -121.55909,
+      "frp": 2.47,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 43.89669,
+      "lon": -121.56543,
+      "frp": 2.47,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 44.03661,
+      "lon": -118.79122,
+      "frp": 3.56,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 44.03728,
+      "lon": -118.79784,
+      "frp": 3.56,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 44.95393,
+      "lon": -116.20186,
+      "frp": 1.41,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 3,
+      "recurring": true
+    },
+    {
+      "lat": 44.96683,
+      "lon": -121.91497,
+      "frp": 1.09,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 44.96815,
+      "lon": -121.91594,
+      "frp": 0.85,
       "confidence": "n",
       "date": "2026-10-15",
       "daysSeen": 4,
       "recurring": true
     },
     {
-      "lat": 31.98788,
-      "lon": -116.8442,
-      "frp": 4.81,
+      "lat": 45.23035,
+      "lon": -123.16512,
+      "frp": 2.19,
       "confidence": "n",
       "date": "2026-10-15",
-      "daysSeen": 8,
+      "daysSeen": 7,
+      "recurring": true
+    },
+    {
+      "lat": 48.88466,
+      "lon": -122.73491,
+      "frp": 1.6,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 49.26423,
+      "lon": -119.96082,
+      "frp": 1.65,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 2,
+      "recurring": false
+    },
+    {
+      "lat": 46.75213,
+      "lon": -120.78583,
+      "frp": 0.89,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 46.89408,
+      "lon": -120.92537,
+      "frp": 0.63,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 46.89809,
+      "lon": -120.9239,
+      "frp": 0.84,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 46.97635,
+      "lon": -122.28955,
+      "frp": 0.38,
+      "confidence": "n",
+      "date": "2026-10-15",
+      "daysSeen": 4,
       "recurring": true
     }
   ]
