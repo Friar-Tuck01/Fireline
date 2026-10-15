@@ -1,7 +1,7 @@
 {
-  "valid_date": "2026-10-14",
-  "model_cycle_utc": "2026-10-14T18:00:00Z",
-  "generated_utc": "2026-10-14T23:25:16.606996Z",
+  "valid_date": "2026-10-15",
+  "model_cycle_utc": "2026-10-15T00:00:00Z",
+  "generated_utc": "2026-10-15T07:42:02.237965Z",
   "bounds": [
     [
       31.0,
@@ -29,12 +29,12 @@
     "#6E32BE"
   ],
   "band_cell_counts": {
-    "weak upslope": 2035524,
-    "moderate upslope": 565725,
-    "strong upslope": 131541,
-    "weak lee": 2620221,
-    "moderate lee": 805153,
-    "strong lee": 219865
+    "weak upslope": 2158731,
+    "moderate upslope": 598168,
+    "strong upslope": 145226,
+    "weak lee": 2693602,
+    "moderate lee": 834217,
+    "strong lee": 243456
   },
   "resolution_m": 450,
   "hours_evaluated": 24,
