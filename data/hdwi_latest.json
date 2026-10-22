@@ -1,6 +1,6 @@
 {
-  "valid_date": "2026-10-19",
-  "generated_utc": "2026-10-21T19:01:13.648203Z",
+  "valid_date": "2026-10-20",
+  "generated_utc": "2026-10-22T18:55:33.596487Z",
   "bounds": [
     [
       31.024999618530273,
@@ -23,16 +23,16 @@
     "#D72D23",
     "#FFFFFF"
   ],
-  "above_p90_cells": 42,
-  "above_p90_fraction": 0.0002,
+  "above_p90_cells": 0,
+  "above_p90_fraction": 0.0,
   "band_cell_counts": {
-    "90-95th": 42,
+    "90-95th": 0,
     "95-97th": 0,
     "97-99th": 0,
     "99th+": 0
   },
   "band_fractions": {
-    "90-95th": 0.0002,
+    "90-95th": 0.0,
     "95-97th": 0.0,
     "97-99th": 0.0,
     "99th+": 0.0
