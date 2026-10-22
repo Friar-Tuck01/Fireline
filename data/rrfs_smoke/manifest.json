@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-22T05:12:31.862711+00:00",
+  "generatedAt": "2026-10-22T12:15:07.153948+00:00",
   "cycleDate": "20261022",
-  "cycleHour": "00",
+  "cycleHour": "06",
   "bounds": [
     [
       31.0,
@@ -88,18 +88,6 @@
     {
       "hour": 72,
       "file": "f072.png",
-      "variant": "conus",
-      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
-    },
-    {
-      "hour": 78,
-      "file": "f078.png",
-      "variant": "conus",
-      "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
-    },
-    {
-      "hour": 84,
-      "file": "f084.png",
       "variant": "conus",
       "field": ":MASSDEN:8 m above ground:.*ave fcst:aerosol=Total aerosol:aerosol_size <2\\.5e-06"
     }
