@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T12:27:55.219016+00:00",
+  "generatedAt": "2026-10-26T20:20:40.046109+00:00",
   "hotspots": [
     {
       "lat": 48.09464,
@@ -326,15 +326,6 @@
       "recurring": true
     },
     {
-      "lat": 34.11382,
-      "lon": -117.9233,
-      "frp": 0.32,
-      "confidence": "n",
-      "date": "2026-10-26",
-      "daysSeen": 2,
-      "recurring": false
-    },
-    {
       "lat": 34.1427,
       "lon": -117.42625,
       "frp": 0.41,
@@ -477,6 +468,78 @@
       "date": "2026-10-26",
       "daysSeen": 6,
       "recurring": true
+    },
+    {
+      "lat": 42.15073,
+      "lon": -111.36042,
+      "frp": 9.59,
+      "confidence": "n",
+      "date": "2026-10-26",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 42.15338,
+      "lon": -111.35264,
+      "frp": 32.25,
+      "confidence": "n",
+      "date": "2026-10-26",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 42.15602,
+      "lon": -111.34484,
+      "frp": 32.25,
+      "confidence": "n",
+      "date": "2026-10-26",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 48.60685,
+      "lon": -102.16543,
+      "frp": 10.71,
+      "confidence": "n",
+      "date": "2026-10-26",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 49.37442,
+      "lon": -102.45364,
+      "frp": 11.81,
+      "confidence": "n",
+      "date": "2026-10-26",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 49.37584,
+      "lon": -102.45486,
+      "frp": 9.74,
+      "confidence": "n",
+      "date": "2026-10-26",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 49.40818,
+      "lon": -102.98208,
+      "frp": 5.44,
+      "confidence": "n",
+      "date": "2026-10-26",
+      "daysSeen": 1,
+      "recurring": false
+    },
+    {
+      "lat": 49.41031,
+      "lon": -102.99136,
+      "frp": 9.56,
+      "confidence": "n",
+      "date": "2026-10-26",
+      "daysSeen": 1,
+      "recurring": false
     }
   ]
 }
