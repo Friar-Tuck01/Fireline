@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-28T22:49:42.767142+00:00",
-  "cycleDate": "20261028",
-  "cycleHour": "18",
+  "generatedAt": "2026-10-29T06:08:53.549227+00:00",
+  "cycleDate": "20261029",
+  "cycleHour": "00",
   "bounds": [
     [
       31.0,
@@ -13,6 +13,12 @@
     ]
   ],
   "hours": [
+    {
+      "hour": 0,
+      "file": "f000.png",
+      "variant": "conus",
+      "field": ":MASSDEN:8 m above ground:.*aerosol=Particulate organic matter dry:aerosol_size <2\\.5e-06"
+    },
     {
       "hour": 6,
       "file": "f006.png",
