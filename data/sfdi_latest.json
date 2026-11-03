@@ -1,6 +1,6 @@
 {
-  "valid_date": "2026-10-31",
-  "generated_utc": "2026-11-02T22:55:59.415504Z",
+  "valid_date": "2026-11-01",
+  "generated_utc": "2026-11-03T20:41:59.203130Z",
   "bounds": [
     [
       31.024999618530273,
@@ -30,16 +30,16 @@
     "#8B2FB0"
   ],
   "class_cell_counts": {
-    "Low": 189427,
-    "Moderate": 17856,
-    "High": 100,
+    "Low": 197287,
+    "Moderate": 10085,
+    "High": 11,
     "Very High": 0,
     "Severe": 0
   },
   "class_fractions": {
-    "Low": 0.9134,
-    "Moderate": 0.0861,
-    "High": 0.0005,
+    "Low": 0.9513,
+    "Moderate": 0.0486,
+    "High": 0.0001,
     "Very High": 0.0,
     "Severe": 0.0
   },
