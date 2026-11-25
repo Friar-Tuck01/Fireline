@@ -1,13 +1,13 @@
 {
-  "valid_date": "2026-11-24",
-  "window_end_utc": "2026-11-24T18:00:00Z",
+  "valid_date": "2026-11-25",
+  "window_end_utc": "2026-11-25T06:00:00Z",
   "analyses_used": [
+    "2026-11-25T06:00:00Z",
+    "2026-11-25T00:00:00Z",
     "2026-11-24T18:00:00Z",
-    "2026-11-24T12:00:00Z",
-    "2026-11-24T06:00:00Z",
-    "2026-11-24T00:00:00Z"
+    "2026-11-24T12:00:00Z"
   ],
-  "generated_utc": "2026-11-24T23:39:09.657971Z",
+  "generated_utc": "2026-11-25T11:36:20.005128Z",
   "bounds": [
     [
       31.024999618530273,
@@ -31,13 +31,13 @@
     "#FFFFFF"
   ],
   "band_cell_counts": {
-    "90-95th": 804,
-    "95-97th": 278,
-    "97-99th": 367,
-    "99th+": 443
+    "90-95th": 1019,
+    "95-97th": 416,
+    "97-99th": 507,
+    "99th+": 409
   },
-  "above_p90_cells": 1892,
-  "above_p90_fraction": 0.00912,
+  "above_p90_cells": 2351,
+  "above_p90_fraction": 0.01134,
   "climatology": "HRRR 2015-2026, 4,257 days",
   "climatology_years": 12,
   "aggregation": "max over the four most recent 00/06/12/18Z analyses",
